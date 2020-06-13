@@ -1,0 +1,72 @@
+body { 
+	font-family: 'Monaco', 'Menlo', courier, monospace; 
+	background: black;
+} 
+a.linkx { 
+	border: 1px solid white; border-radius: 0.5em; 
+	background: black; 
+	color: white; 
+} 
+a.linkx:visited { 
+	color: white; 
+}
+a {
+	color: white
+}
+	
+hr {
+	border: 1px dotted;
+}
+pre.logo {
+	color: #ffffff
+	white-space: pre-wrap;
+	word-wrap: break-word;
+}
+
+html {
+	-webkit-text-size-adjust: none
+}
+
+html ::selection {
+	background: #bf00ff;
+	color: #fff
+}
+
+html ::-moz-selection {
+	background: #000;
+	color: #fff
+}
+#container {
+	width: 700px;
+	margin: 0 auto;
+	padding: auto;
+}
+
+#content {
+	width: auto;
+	border: 1px dotted;
+	padding: 0.6em;
+}
+
+#cans {
+	width: auto;
+	margin: 5px auto;
+	border: 1px dotted;
+	padding: 0.2em;
+	border-radius: 0.3em;
+}
+
+#header {
+	width: auto;
+	margin: 10px auto;
+	border: 1px dotted;
+	padding: 0.4em;
+}
+
+#footer {
+	width: auto;
+	margin: 10px auto;
+	border: 1px dotted;
+	padding: 0.4em;
+	text-align: center;
+}
