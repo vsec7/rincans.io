@@ -1,2 +1,0 @@
-# rincans.io
-my cans
